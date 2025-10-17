@@ -20,7 +20,7 @@ variable "resource_group_name"{
 }
 variable "location"{
   type=string
-  default="azurerm_resource_group.rgoctobermcit.location"
+  default="canadacentral"
 }
 variable "account_tier"{
   type=string
