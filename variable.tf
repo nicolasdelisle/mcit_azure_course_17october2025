@@ -7,6 +7,9 @@ variable "client_id"{
 variable "client_secret"{
   type=string
 }
+variable "tenant_id"{
+  type=string
+}
 variable "storage_account_name"{
   type=string
   default="mcitoctstorage"
