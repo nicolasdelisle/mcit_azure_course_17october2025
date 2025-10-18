@@ -1,4 +1,4 @@
 resource "azurerm_resource_group" "rgoctobermcit" {
-  name     = "mcit_rg_october172025"
+  name     = var.resource_group_name
   location = "canadacentral"
 }
