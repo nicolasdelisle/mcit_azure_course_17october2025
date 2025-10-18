@@ -16,7 +16,7 @@ variable "storage_account_name"{
 }
 variable "resource_group_name"{
   type=string
-  default="azurerm_resource_group.rgoctobermcit.name"
+  default="mcitrgnicolas"
 }
 variable "location"{
   type=string
