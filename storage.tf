@@ -9,4 +9,3 @@ resource "azurerm_storage_account" "azurestoagemcit" {
     environment = var.environment
   }
 }
-#ccc
