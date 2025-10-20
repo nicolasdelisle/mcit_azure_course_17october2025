@@ -114,7 +114,11 @@ output "department_last_3" {
 
  
 # 3 Join all countries into a single string separated by commas.
- 
+output "countries_joined" {
+  value = join(",", var.countries)
+}
+
+
 # 4. Sp4 lit the first city in the cities list into individual characters.
  
 # 5. Replace "Canada" with "CA" inside the countries list (apply replacement for all values).
