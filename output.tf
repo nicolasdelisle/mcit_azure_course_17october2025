@@ -38,7 +38,7 @@ output "replace_city" {
 }
  
 # MCIT Exercise 9: Format greeting string
-output "greeting" {
+output "welcome" {
   value = format("Hello %s %s, welcome to %s!", var.firstname, var.lastname, var.environments_second[0])
 }
  
