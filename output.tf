@@ -97,3 +97,31 @@ output "welcome" {
 output "city_check" {
   value = var.cities[0] == "Vancouver" ? "West Coast City" : "Different City"
 }
+
+/* 🔹 MCIT String Exercises – Extended
+ 
+1.Count how many countries exist in the countries list and output the number.
+*/
+output "number_of_countries" {
+  value = length(var.countries)
+}
+
+ 
+# 2 Take the last 3 characters of the department string.
+ 
+# 3 Join all countries into a single string separated by commas.
+ 
+# 4. Sp4 lit the first city in the cities list into individual characters.
+ 
+# 5. Replace "Canada" with "CA" inside the countries list (apply replacement for all values).
+ 
+# 6. Create a greeting that says: "Hello from CITY, COUNTRY!" using the first values in both lists.
+ 
+# 7. Check if "Python" exists inside skills_string and output "Skill Found" or "Not Found".
+ 
+# 8. Create an output that repeats the company variable 3 times in a row (e.g., "MCITMCITMCIT").
+ 
+# 9. Extract the second skill from skills_string after splitting.
+ 
+# 10. Format a sentence that shows the first city, its country, and the department (e.g., "Vancouver, Canada belongs to CloudEngineering department").
+ 
