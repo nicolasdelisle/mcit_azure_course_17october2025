@@ -19,7 +19,7 @@ output "firstname_length" {
  
 # MCIT Exercise 5: Substring of lastname (first 3 letters)
 output "lastname_substring" {
-  value = substr(var.lastname, 0, 3)
+  value = substr(var.lastname, 1)
 }
  
 # MCIT Exercise 6: Join service names into one string
