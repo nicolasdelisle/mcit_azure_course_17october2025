@@ -46,13 +46,54 @@ output "greeting" {
 output "is_prod" {
   value = var.environments_second[3] == "prod" ? "Production environment" : "Not production"
 }
-# 1 Concatenate the company and department variables into one string separated by an underscore.
+/* exercice make the output code
+ 1 Concatenate the company and department variables into one string separated by an underscore.
+*/
+output "company_department" {
+  value = "${var.company}_${var.department}"
+}
+
 # 2 Convert all country names in countries to uppercase.
+output "countries_upper" {
+  value = [for countrie in var.countries : upper(countrie)]
+}
+
 # 3 Convert all city names in cities to lowercase.
+output "cities_lower" {
+  value = [for city in var.cities : lower(city)]
+}
+
 # 4 Find the length of the department string.
+output "department_length" {
+  value = length(var.department)
+}
+
 # 5 Extract the first two characters of the company variable.
+output "company_first_two" {
+  value = substr(var.company, 0, 2)
+}
+
 # 6 Join all cities in cities into a single string separated by " | ".
+output "cities_joined" {
+  value = join(" | ", var.cities)
+}
+
 # 7 Split the skills_string variable into a list of skills.
+output "split_skill" {
+  value = split(",", var.skills_string)
+}
+
 # 8 Replace "Engineering" with "DevOps" in the department variable.
+output "replace_Engineering" {
+  value = replace(var.department, "Engineering", "DevOps")
+}
+
 # 9 Format a string that introduces the company and department.
+output "greeting" {
+  value = format("Welcome to %s!, departement %s!", var.company, var.department)
+}
+ 
 # 10 Check if the first city in cities is "Vancouver" and output "West Coast City" or "Different City" depending on the result.
+output "city_check" {
+  value = var.cities[0] == "Vancouver" ? "West Coast City" : "Different City"
+}
