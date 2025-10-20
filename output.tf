@@ -44,5 +44,15 @@ output "greeting" {
  
 # MCIT Exercise 10: Conditional string comparison
 output "is_prod" {
-  value = var.environments_second[2] == "prod" ? "Production environment" : "Not production"
+  value = var.environments_second[3] == "prod" ? "Production environment" : "Not production"
 }
+# 1 Concatenate the company and department variables into one string separated by an underscore.
+# 2 Convert all country names in countries to uppercase.
+# 3 Convert all city names in cities to lowercase.
+# 4 Find the length of the department string.
+# 5 Extract the first two characters of the company variable.
+# 6 Join all cities in cities into a single string separated by " | ".
+# 7 Split the skills_string variable into a list of skills.
+# 8 Replace "Engineering" with "DevOps" in the department variable.
+# 9 Format a string that introduces the company and department.
+# 10 Check if the first city in cities is "Vancouver" and output "West Coast City" or "Different City" depending on the result.
