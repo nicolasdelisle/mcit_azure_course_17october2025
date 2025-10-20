@@ -47,3 +47,6 @@ variable "firstname" {
 variable "lastname" {
   default = "Delisle"
 }
+variable "env_string" {
+  default = "dev,qa,stage,prod"
+}
