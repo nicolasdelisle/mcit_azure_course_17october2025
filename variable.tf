@@ -50,3 +50,22 @@ variable "lastname" {
 variable "env_string" {
   default = "dev,qa,stage,prod"
 }
+variable "countries" {
+  default = ["Canada", "USA", "Mexico", "Brazil"]
+}
+ 
+variable "cities" {
+  default = ["Vancouver", "NewYork", "Cancun", "Rio"]
+}
+ 
+variable "company" {
+  default = "MCIT"
+}
+ 
+variable "department" {
+  default = "CloudEngineering"
+}
+ 
+variable "skills_string" {
+  default = "Terraform,Docker,Kubernetes,Python"
+}
