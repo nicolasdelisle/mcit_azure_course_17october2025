@@ -1,3 +1,4 @@
+/*
 # MCIT Exercise 1: Concatenate first + last name
 output "full_name" {
   value = "${var.firstname} ${var.lastname}"
@@ -97,7 +98,7 @@ output "welcome" {
 output "city_check" {
   value = var.cities[0] == "Vancouver" ? "West Coast City" : "Different City"
 }
-
+*/
 /* 🔹 MCIT String Exercises – Extended
  
 1.Count how many countries exist in the countries list and output the number.
