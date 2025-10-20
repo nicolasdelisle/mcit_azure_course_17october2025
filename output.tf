@@ -44,5 +44,5 @@ output "greeting" {
  
 # MCIT Exercise 10: Conditional string comparison
 output "is_prod" {
-  value = var.environments_second[3] == "prod" ? "Production environment" : "Not production"
+  value = var.environments_second[2] == "prod" ? "Production environment" : "Not production"
 }
