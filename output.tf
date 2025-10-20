@@ -108,6 +108,10 @@ output "number_of_countries" {
 
  
 # 2 Take the last 3 characters of the department string.
+output "department_last_3" {
+  value = substr(var.department, length(var.department) - 3, 3)
+}
+
  
 # 3 Join all countries into a single string separated by commas.
  
