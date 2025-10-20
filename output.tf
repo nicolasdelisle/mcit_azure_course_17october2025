@@ -38,7 +38,7 @@ output "replace_city" {
 }
  
 # MCIT Exercise 9: Format greeting string
-output "welcome" {
+output "Greeting" {
   value = format("Hello %s %s, welcome to %s!", var.firstname, var.lastname, var.environments_second[0])
 }
  
@@ -89,7 +89,7 @@ output "replace_Engineering" {
 }
 
 # 9 Format a string that introduces the company and department.
-output "greeting" {
+output "welcome" {
   value = format("Welcome to %s!, departement %s!", var.company, var.department)
 }
  
