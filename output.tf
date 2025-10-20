@@ -98,7 +98,7 @@ output "welcome" {
 output "city_check" {
   value = var.cities[0] == "Vancouver" ? "West Coast City" : "Different City"
 }
-*/
+uuu*/
 /* 🔹 MCIT String Exercises – Extended
  
 1.Count how many countries exist in the countries list and output the number.
