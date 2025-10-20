@@ -120,7 +120,11 @@ output "countries_joined" {
 
 
 # 4. Sp4 lit the first city in the cities list into individual characters.
- 
+# the first city on the list split by individual character
+ output "first_city_characters" {
+  value = [for city in range(0, length(var.cities[0])) : substr(var.cities[0], city, 1)]
+}
+
 # 5. Replace "Canada" with "CA" inside the countries list (apply replacement for all values).
  
 # 6. Create a greeting that says: "Hello from CITY, COUNTRY!" using the first values in both lists.
