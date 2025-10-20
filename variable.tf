@@ -34,4 +34,16 @@ variable "environment"{
   type=string
   default="staging"
 }
-
+variable "environments_second" {
+  default = ["dev", "qa", "stage", "prod"]
+}
+ 
+variable "service_names_town" {
+  default = ["montreal", "toronto", "calgary", "ottawa"]
+}
+variable "firstname" {
+  default = "Nicolas" 
+}
+variable "lastname" {
+  default = "Delisle"
+}
