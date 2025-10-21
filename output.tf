@@ -125,7 +125,7 @@ output "countries_joined" {
  output "first_city_characters" {
   value = [for city in range(0, length(var.cities[0])) : substr(var.cities[0], city, 1)]
 }
-*/
+
 # 5. Replace "Canada" with "CA" inside the countries list (apply replacement for all values).
  output "countries_replace_canada" {
   value = [for country in var.countries : replace(country, "Canada", "CA")]
