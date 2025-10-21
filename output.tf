@@ -1,3 +1,4 @@
+/*
 # MCIT Exercise 1: Concatenate first + last name
 output "full_name" {
   value = "${var.firstname} ${var.lastname}"
@@ -124,7 +125,7 @@ output "countries_joined" {
  output "first_city_characters" {
   value = [for city in range(0, length(var.cities[0])) : substr(var.cities[0], city, 1)]
 }
-
+*/
 # 5. Replace "Canada" with "CA" inside the countries list (apply replacement for all values).
  
 # 6. Create a greeting that says: "Hello from CITY, COUNTRY!" using the first values in both lists.
