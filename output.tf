@@ -146,7 +146,7 @@ output "countries_joined" {
 output "env_dev_instance" {
   value = lookup(var.env_settings, "dev")
 }
- 
+/* 
 # MCIT Lookup Exercise 2: Fetch instance for 'prod', default to 'default_instance' if not found
 output "env_prod_instance_or_default" {
   value = lookup(var.env_settings, "prod", "default_instance")
@@ -191,3 +191,4 @@ output "stage_key_presence" {
 output "currency_mexico_upper" {
   value = upper(lookup(var.country_currency, "Mexico", "Unknown"))
 }
+*/
