@@ -159,7 +159,7 @@ output "toronto_airport_code" {
  
 # MCIT Lookup Exercise 4: Lookup Ottawa code with fallback "N/A"
 output "ottawa_airport_code_or_na" {
-  value = lookup(var.city_codes, "Ottawa", "N/A")
+  value = lookup(var.city_codes, "Ottawa")
 }
  
 # MCIT Lookup Exercise 5: Currency for Canada
