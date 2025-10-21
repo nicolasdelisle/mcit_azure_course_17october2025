@@ -98,7 +98,7 @@ output "welcome" {
 output "city_check" {
   value = var.cities[0] == "Vancouver" ? "West Coast City" : "Different City"
 }
-*/
+
 # 🔹 MCIT String Exercises – Extended
  
 # 1.Count how many countries exist in the countries list and output the number.
@@ -155,8 +155,8 @@ output "countries_joined" {
 output "city_country_department_sentence" {
   value = format("%s, %s belongs to %s department", var.cities[0], var.countries[0], var.department)
 }
+*/
 
-/* 
 # -------------------
 # MCIT Lookup Exercises (code)
 # -------------------
@@ -211,4 +211,3 @@ output "currency_mexico_upper" {
   value = upper(lookup(var.country_currency, "Mexico", "Unknown"))
 }
 
-*/
