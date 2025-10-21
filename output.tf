@@ -146,7 +146,7 @@ output "countries_joined" {
 output "env_dev_instance" {
   value = lookup(var.env_settings, "dev")
 }
-/* 
+
 # MCIT Lookup Exercise 2: Fetch instance for 'prod', default to 'default_instance' if not found
 output "env_prod_instance_or_default" {
   value = lookup(var.env_settings, "prod", "default_instance")
@@ -156,7 +156,7 @@ output "env_prod_instance_or_default" {
 output "toronto_airport_code" {
   value = lookup(var.city_codes, "Toronto")
 }
- 
+/*  
 # MCIT Lookup Exercise 4: Lookup Ottawa code with fallback "N/A"
 output "ottawa_airport_code_or_na" {
   value = lookup(var.city_codes, "Ottawa", "N/A")
