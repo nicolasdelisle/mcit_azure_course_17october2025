@@ -98,7 +98,7 @@ output "welcome" {
 output "city_check" {
   value = var.cities[0] == "Vancouver" ? "West Coast City" : "Different City"
 }
-
+*/
 # 🔹 MCIT String Exercises – Extended
  
 # 1.Count how many countries exist in the countries list and output the number.
@@ -143,7 +143,7 @@ output "countries_joined" {
 
 # 8. Create an output that repeats the company variable 3 times in a row (e.g., "MCITMCITMCIT").
  output "company_repeated_3x" {
-  value = var.company * 3
+  value = join("", [for i in range(3) : var.company])
 }
 
 # 9. Extract the second skill from skills_string after splitting.
