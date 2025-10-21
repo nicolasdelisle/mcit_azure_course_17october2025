@@ -132,15 +132,31 @@ output "countries_joined" {
 }
 
 # 6. Create a greeting that says: "Hello from CITY, COUNTRY!" using the first values in both lists.
- 
+ output "city_country_greeting" {
+  value = format("Hello from %s, %s!", var.cities[0], var.countries[0])
+}
+
 # 7. Check if "Python" exists inside skills_string and output "Skill Found" or "Not Found".
- 
+ output "check_python_skill" {
+  value = contains(split(",", var.skills_string), "Python") ? "Skill Found" : "Not Found"
+}
+
 # 8. Create an output that repeats the company variable 3 times in a row (e.g., "MCITMCITMCIT").
- 
+ output "company_repeated_3x" {
+  value = var.company * 3
+}
+
 # 9. Extract the second skill from skills_string after splitting.
- 
+ output "second_skill" {
+  value = split(",", var.skills_string)[1]
+}
+
 # 10. Format a sentence that shows the first city, its country, and the department (e.g., "Vancouver, Canada belongs to CloudEngineering department").
- 
+output "city_country_department_sentence" {
+  value = format("%s, %s belongs to %s department", var.cities[0], var.countries[0], var.department)
+}
+
+/* 
 # -------------------
 # MCIT Lookup Exercises (code)
 # -------------------
@@ -195,3 +211,4 @@ output "currency_mexico_upper" {
   value = upper(lookup(var.country_currency, "Mexico", "Unknown"))
 }
 
+*/
