@@ -144,7 +144,7 @@ output "countries_joined" {
  
 # MCIT Lookup Exercise 1: Fetch instance type for 'dev'
 output "env_dev_instance" {
-  value = lookup(var.env_settings, "prod")
+  value = lookup(var.env_settings, "aaa")
 }
 
 # MCIT Lookup Exercise 2: Fetch instance for 'prod', default to 'default_instance' if not found
