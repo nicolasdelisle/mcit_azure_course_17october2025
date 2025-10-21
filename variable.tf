@@ -105,4 +105,7 @@ variable "request_cities" {
   description = "Cities to resolve into airport codes for exercise 8"
   default     = ["Vancouver", "Calgary", "Ottawa"]
 }
- 
+# A sentinel value used to detect missing keys via lookup() in exercise 9
+locals {
+  sentinel_missing = "__MISSING__"
+}
