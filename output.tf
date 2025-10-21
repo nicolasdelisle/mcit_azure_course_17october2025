@@ -156,7 +156,7 @@ output "env_prod_instance_or_default" {
 output "toronto_airport_code" {
   value = lookup(var.city_codes, "Toronto")
 }
-/*  
+ 
 # MCIT Lookup Exercise 4: Lookup Ottawa code with fallback "N/A"
 output "ottawa_airport_code_or_na" {
   value = lookup(var.city_codes, "Ottawa", "N/A")
@@ -171,7 +171,7 @@ output "currency_canada" {
 output "currency_brazil_or_unknown" {
   value = lookup(var.country_currency, "Brazil", "Unknown")
 }
- 
+/*   
 # MCIT Lookup Exercise 7: Format a sentence using a lookup result
 output "formatted_env_dev_instance" {
   value = format("Environment dev uses %s", lookup(var.env_settings, "dev", "unknown_instance"))
