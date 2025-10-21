@@ -171,7 +171,7 @@ output "currency_canada" {
 output "currency_brazil_or_unknown" {
   value = lookup(var.country_currency, "Brazil", "Unknown")
 }
-/*   
+ 
 # MCIT Lookup Exercise 7: Format a sentence using a lookup result
 output "formatted_env_dev_instance" {
   value = format("Environment dev uses %s", lookup(var.env_settings, "dev", "unknown_instance"))
@@ -181,7 +181,7 @@ output "formatted_env_dev_instance" {
 output "resolved_airport_codes" {
   value = [for c in var.request_cities : lookup(var.city_codes, c, "XXX")]
 }
- 
+/*   
 # MCIT Lookup Exercise 9: Conditional check if 'stage' exists using lookup() + sentinel
 output "stage_key_presence" {
   value = lookup(var.env_settings, "stage", local.sentinel_missing) != local.sentinel_missing ? "Found" : "Not Found"
