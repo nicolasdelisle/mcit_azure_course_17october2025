@@ -127,7 +127,10 @@ output "countries_joined" {
 }
 */
 # 5. Replace "Canada" with "CA" inside the countries list (apply replacement for all values).
- 
+ output "countries_replace_canada" {
+  value = [for country in var.countries : replace(country, "Canada", "CA")]
+}
+
 # 6. Create a greeting that says: "Hello from CITY, COUNTRY!" using the first values in both lists.
  
 # 7. Check if "Python" exists inside skills_string and output "Skill Found" or "Not Found".
