@@ -221,7 +221,9 @@ output "currency_mexico_upper" {
 # 1️⃣ Plan Quota
 # Use lookup() to return the quota for a selected plan (free, pro, enterprise).
 # If the plan is not found, return 0.
-
+output "selected_plan" {
+  value = local.selected_plan_quota, "0"
+}
 # 2️⃣ Region Endpoint with Secondary Fallback
 # Fetch the API endpoint for a given region.
 # First check region_endpoints.
