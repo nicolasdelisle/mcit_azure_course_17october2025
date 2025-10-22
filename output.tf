@@ -156,7 +156,7 @@ output "city_country_department_sentence" {
   value = format("%s, %s belongs to %s department", var.cities[0], var.countries[0], var.department)
 }
 
-*/
+
 # -------------------
 # MCIT Lookup Exercises (code)
 # -------------------
@@ -210,6 +210,59 @@ output "stage_key_presence" {
 output "currency_mexico_upper" {
   value = upper(lookup(var.country_currency, "Mexico", "Unknown"))
 }
-
+*/
 
 # class 22 october
+
+##########################################
+# MCIT Lookup Challenge Questions
+##########################################
+
+# 1️⃣ Plan Quota
+# Use lookup() to return the quota for a selected plan (free, pro, enterprise).
+# If the plan is not found, return 0.
+
+# 2️⃣ Region Endpoint with Secondary Fallback
+# Fetch the API endpoint for a given region.
+# First check region_endpoints.
+# If not found, check override_endpoints.
+# If still not found, return "not-available".
+
+# 3️⃣ Nested Greeting Lookup
+# From a nested map of greetings (with keys like en, fr, es),
+# fetch the "hello" greeting for the selected language.
+# If the language doesn’t exist, return "Hi".
+
+# 4️⃣ Airport Codes for Requested Cities
+# Given a list of requested cities, return a list of airport codes.
+# If a city isn’t in the map, return "XXX" for that city.
+
+# 5️⃣ Environment Presence Check
+# Use lookup() with a sentinel value to check if a given environment
+# (e.g., dev, qa, stage, prod) exists in a map.
+# Output "Exists" or "Missing".
+
+# 6️⃣ Region Endpoint or Message
+# Lookup an endpoint for the selected region.
+# If the region isn’t supported, output "Unsupported region: <region>".
+
+# 7️⃣ Service Port After Merge
+# Merge two maps (base_ports and custom_ports)
+# and use lookup() to get the port for a given service.
+# If the service is missing, return -1.
+
+# 8️⃣ Case-Insensitive Country Code
+# Build a map where country names are normalized to lowercase.
+# Use lookup() to fetch the country code for an input like "usa".
+# If not found, return "UNKNOWN".
+
+# 9️⃣ Product Price with Multi-Map Fallbacks
+# Lookup a product’s price:
+# First, check the regional price for the selected region.
+# If not found, check global prices.
+# If not found, return -1.
+
+# 🔟 Feature Flag Status
+# Lookup a boolean feature flag (e.g., chat, search) from a map.
+# If found, output "enabled" or "disabled".
+# If missing, treat as "disabled".
