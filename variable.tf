@@ -109,3 +109,13 @@ variable "request_cities" {
 locals {
   sentinel_missing = "__MISSING__"
 }
+# variable class 22 october
+# Map variable holding quotas for each plan
+variable "plan_quotas" {
+  type = map(number)
+  default = {
+    free       = 10
+    pro        = 100
+    enterprise = 1000
+  }
+}
