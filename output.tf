@@ -156,7 +156,7 @@ output "city_country_department_sentence" {
   value = format("%s, %s belongs to %s department", var.cities[0], var.countries[0], var.department)
 }
 
-
+*/
 # -------------------
 # MCIT Lookup Exercises (code)
 # -------------------
@@ -211,5 +211,5 @@ output "currency_mexico_upper" {
   value = upper(lookup(var.country_currency, "Mexico", "Unknown"))
 }
 
-*/
+
 # class 22 october
