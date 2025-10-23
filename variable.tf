@@ -226,3 +226,23 @@ locals {
     for k, v in local.country_codes_mixed : lower(k) => v
   }
 }
+
+locals {
+  region  = "eu-west-1"
+  product = "widget"
+
+  # Regional and global price maps
+  regional_prices = {
+    "eu-west-1" = {
+      widget = 12.5
+      pro    = 49.9
+    }
+    "us-east-1" = {
+      widget = 10.0
+    }
+  }
+
+  global_prices = {
+    widget = 15.0
+    pro    = 59.0
+  }
