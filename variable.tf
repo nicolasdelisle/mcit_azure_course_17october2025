@@ -127,3 +127,60 @@ variable "greeting" {
     Es = "hola"
   }
 }
+
+variable "greeting" {
+  description = "Map of greeting -> language"
+  default = {
+    stage = true
+    qa   = true 
+    dev = true
+    prod = true
+  }
+}
+# given variable to complete exercice
+
+variable "user_plan" { 
+  description = "Selected subscription plan" 
+  default = "pro" 
+}
+
+variable "region" { 
+  description = "Selected deployment region" 
+  default = "eu-west-1" 
+}
+
+variable "lang" { 
+  description = "Language code for greetings" 
+  default = "fr" 
+}
+
+variable "requested_cities" { 
+  description = "Cities to resolve to airport codes" 
+  default = ["Toronto", "Ottawa", "Vancouver"] 
+}
+
+variable "country_input" { 
+  description = "Country name for code lookup (case-insensitive demo)" 
+  default = "usa" 
+}
+
+variable "service" { 
+  description = "Service to fetch port for" 
+  default = "api" 
+}
+
+variable "feature_to_check" { 
+  description = "Which feature flag to read" 
+  default = "chat" 
+}
+
+variable "environment" { 
+  description = "Environment to test presence in env_settings" 
+  default = "stage" 
+}
+
+variable "product" {
+  description = "Which product to price" 
+  default = "widget" 
+}
+
