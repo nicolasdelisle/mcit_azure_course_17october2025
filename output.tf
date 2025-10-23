@@ -229,7 +229,18 @@ output "selected_plan" {
 # First check region_endpoints.
 # If not found, check override_endpoints.
 # If still not found, return "not-available".
-
+# Output with fallback lookup logic:
+output "api_endpoint" {
+  value = lookup(
+    local.region_endpoints,
+    var.region,
+    lookup(
+      local.override_endpoints,
+      var.region,
+      "not-available"
+    )
+  )
+}
 # 3️⃣ Nested Greeting Lookup
 # From a nested map of greetings (with keys like en, fr, es),
 # fetch the "hello" greeting for the selected language.
@@ -241,12 +252,13 @@ output "look_greeting" {
 # Given a list of requested cities, return a list of airport codes.
 # If a city isn’t in the map, return "XXX" for that city.
 output "airport_code_or_xxx" {
-  value = lookup(var.city_codes, "Ottawa", "XXX")
+  value = lookup(var.city_codes, "Montreal", "XXX")
 }
 # 5️⃣ Environment Presence Check
 # Use lookup() with a sentinel value to check if a given environment
 # (e.g., dev, qa, stage, prod) exists in a map.
 # Output "Exists" or "Missing".
+
 
 # 6️⃣ Region Endpoint or Message
 # Lookup an endpoint for the selected region.
