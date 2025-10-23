@@ -149,12 +149,16 @@ variable "region" {
   default = "eu-west-1" 
 }
 
+variable "region" { 
+  description = "Selected deployment region" 
+  default     = "eu-west-1" 
+}
+
 locals {
   region_endpoints = {
     "us-east-1" = "api.use1.example.com"
     "eu-west-1" = "api.euw1.example.com"
   }
-}
 
   override_endpoints = {
     "ap-south-1" = "api.aps1.example.com"
