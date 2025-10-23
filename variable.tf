@@ -122,8 +122,8 @@ locals {
 variable "greeting" {
   description = "Map of greeting -> language"
   default = {
-    bonjours = "Fr"
-    hello   = "En"
-    hola = "Es"
+    Fr = "bonjours"
+    En   = "hello"
+    Es = "hola"
   }
 }
