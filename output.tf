@@ -1,4 +1,4 @@
-n/*
+/*
 # MCIT Exercise 1: Concatenate first + last name
 output "full_name" {
   value = "${var.firstname} ${var.lastname}"
@@ -235,7 +235,7 @@ output "selected_plan" {
 # fetch the "hello" greeting for the selected language.
 # If the language doesn’t exist, return "Hi".
 output "look_greeting" {
-  value = lookup(var.greeting, "hello", "Hi")
+  value = lookup(var.greeting, "En", "Hi")
 }
 # 4️⃣ Airport Codes for Requested Cities
 # Given a list of requested cities, return a list of airport codes.
