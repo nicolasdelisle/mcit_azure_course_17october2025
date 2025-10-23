@@ -110,7 +110,7 @@ locals {
   sentinel_missing = "__MISSING__"
 }
 # variable class 22 october
-# Map variable holding quotas for each plan
+# local holding quotas for each plan
 locals {
   plan_quotas = {
     free       = 100
