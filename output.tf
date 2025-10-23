@@ -240,7 +240,9 @@ output "look_greeting" {
 # 4️⃣ Airport Codes for Requested Cities
 # Given a list of requested cities, return a list of airport codes.
 # If a city isn’t in the map, return "XXX" for that city.
-
+output "airport_code_or_xxx" {
+  value = lookup(var.city_codes, "Ottawa", "XXX")
+}
 # 5️⃣ Environment Presence Check
 # Use lookup() with a sentinel value to check if a given environment
 # (e.g., dev, qa, stage, prod) exists in a map.
