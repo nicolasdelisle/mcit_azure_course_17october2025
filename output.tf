@@ -234,7 +234,9 @@ output "selected_plan" {
 # From a nested map of greetings (with keys like en, fr, es),
 # fetch the "hello" greeting for the selected language.
 # If the language doesn’t exist, return "Hi".
-
+output "look_greeting" {
+  value = lookup(var.greeting, "hello", "Hi")
+}
 # 4️⃣ Airport Codes for Requested Cities
 # Given a list of requested cities, return a list of airport codes.
 # If a city isn’t in the map, return "XXX" for that city.
