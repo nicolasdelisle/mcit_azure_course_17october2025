@@ -231,7 +231,6 @@ locals {
   region  = "eu-west-1"
   product = "widget"
 
-  # Regional and global price maps
   regional_prices = {
     "eu-west-1" = {
       widget = 12.5
@@ -246,3 +245,14 @@ locals {
     widget = 15.0
     pro    = 59.0
   }
+
+  # Lookup logic:
+  # 1 Check regional map for this region
+  # 2 If not found, check global map
+  # 3 If not found in either, return -1
+  selected_price = lookup(
+    lookup(local.regional_prices, local.region, {}),
+    local.product,
+    lookup(local.global_prices, local.product, -1)
+  )
+}
