@@ -146,11 +146,6 @@ variable "user_plan" {
 
 variable "region" { 
   description = "Selected deployment region" 
-  default = "eu-west-1" 
-}
-
-variable "region" { 
-  description = "Selected deployment region" 
   default     = "eu-west-1" 
 }
 
