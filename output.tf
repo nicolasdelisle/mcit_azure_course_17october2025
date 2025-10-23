@@ -296,7 +296,7 @@ output "service_port" {
 output "country_code" {
   value = lookup(
     local.normalized_country_codes,
-    "USA",
+    "usa",
     "UNKNOWN"
   )
 }
@@ -306,7 +306,16 @@ output "country_code" {
 # First, check the regional price for the selected region.
 # If not found, check global prices.
 # If not found, return -1.
+  selected_price = lookup(
+    lookup(local.regional_prices, local.region, {}),
+    local.product,
+    lookup(local.global_prices, local.product, -1)
+  )
+}
 
+output "product_price" {
+  value = local.selected_price
+}
 # 🔟 Feature Flag Status
 # Lookup a boolean feature flag (e.g., chat, search) from a map.
 # If found, output "enabled" or "disabled".
