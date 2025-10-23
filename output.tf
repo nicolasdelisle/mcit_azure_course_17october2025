@@ -260,7 +260,7 @@ output "airport_code_or_xxx" {
 # Output "Exists" or "Missing".
 output "environment_status" {
   value = (
-    lookup(local.env_settings, var.environment, local.sentinel_missing) != local.sentinel_missing ?
+    lookup(local.env_settings, var.environments, local.sentinel_missings) != local.sentinel_missings ?
     "Exists" :
     "Missing"
   )
