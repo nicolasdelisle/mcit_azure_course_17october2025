@@ -221,4 +221,8 @@ locals {
     USA    = "US"
     Mexico = "MX"
   }
+
+  normalized_country_codes = {
+    for k, v in local.country_codes_mixed : lower(k) => v
+  }
 }
