@@ -161,7 +161,7 @@ locals {
 }
 
 locals {
-  sentinel_missing = "MISSING"
+  sentinel_missings = "MISSING"
 
   env_settings = {
     dev  = "t2.micro"
