@@ -281,6 +281,13 @@ output "region_endpoint_message" {
 # Merge two maps (base_ports and custom_ports)
 # and use lookup() to get the port for a given service.
 # If the service is missing, return -1.
+output "service_port" {
+  value = lookup(
+    merge(local.base_ports, local.custom_ports),
+    var.service,
+    -1
+  )
+}
 
 # 8️⃣ Case-Insensitive Country Code
 # Build a map where country names are normalized to lowercase.
