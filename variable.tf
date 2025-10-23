@@ -215,3 +215,9 @@ variable "product" {
   default = "widget" 
 }
 
+locals {
+  country_codes_mixed = {
+    Canada = "CA"
+    USA    = "US"
+    Mexico = "MX"
+  }
