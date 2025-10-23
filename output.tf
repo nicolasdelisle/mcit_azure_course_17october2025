@@ -258,11 +258,24 @@ output "airport_code_or_xxx" {
 # Use lookup() with a sentinel value to check if a given environment
 # (e.g., dev, qa, stage, prod) exists in a map.
 # Output "Exists" or "Missing".
-
+output "environment_status" {
+  value = (
+    lookup(local.env_settings, var.environment, local.sentinel_missing) != local.sentinel_missing ?
+    "Exists" :
+    "Missing"
+  )
+}
 
 # 6️⃣ Region Endpoint or Message
 # Lookup an endpoint for the selected region.
 # If the region isn’t supported, output "Unsupported region: <region>".
+output "region_endpoint_message" {
+  value = lookup(
+    local.region_endpoints,
+    var.region,
+    "Unsupported region: ${var.region}"
+  )
+}
 
 # 7️⃣ Service Port After Merge
 # Merge two maps (base_ports and custom_ports)
