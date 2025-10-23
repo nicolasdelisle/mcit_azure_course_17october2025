@@ -256,3 +256,15 @@ locals {
     lookup(local.global_prices, local.product, -1)
   )
 }
+
+locals {
+  feature_flags = {
+    chat   = true
+    search = false
+  }
+}
+
+variable "feature_to_check" {
+  description = "Which feature flag to read"
+  default     = "chat"
+}
