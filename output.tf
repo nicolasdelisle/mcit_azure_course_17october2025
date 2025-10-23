@@ -293,6 +293,13 @@ output "service_port" {
 # Build a map where country names are normalized to lowercase.
 # Use lookup() to fetch the country code for an input like "usa".
 # If not found, return "UNKNOWN".
+output "country_code" {
+  value = lookup(
+    local.normalized_country_codes,
+    lower(var.country_input),
+    "UNKNOWN"
+  )
+}
 
 # 9️⃣ Product Price with Multi-Map Fallbacks
 # Lookup a product’s price:
