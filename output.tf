@@ -317,3 +317,10 @@ output "product_price" {
 # Lookup a boolean feature flag (e.g., chat, search) from a map.
 # If found, output "enabled" or "disabled".
 # If missing, treat as "disabled".
+output "feature_status" {
+  value = lookup(
+    local.feature_flags,
+    var.feature_to_check,
+    false
+  ) ? "enabled" : "disabled"
+}
