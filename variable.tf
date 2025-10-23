@@ -160,6 +160,16 @@ locals {
   }
 }
 
+locals {
+  sentinel_missing = "MISSING"
+
+  env_settings = {
+    dev  = "t2.micro"
+    qa   = "t3.small"
+    prod = "m5.large"
+  }
+}
+
 variable "lang" { 
   description = "Language code for greetings" 
   default = "fr" 
