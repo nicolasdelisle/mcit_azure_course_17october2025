@@ -128,7 +128,7 @@ variable "greeting" {
   }
 }
 
-variable "greeting" {
+variable "greetings" {
   description = "Map of greeting -> language"
   default = {
     stage = true
@@ -185,7 +185,7 @@ variable "feature_to_check" {
   default = "chat" 
 }
 
-variable "environment" { 
+variable "environments" { 
   description = "Environment to test presence in env_settings" 
   default = "stage" 
 }
