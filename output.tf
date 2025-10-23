@@ -296,7 +296,7 @@ output "service_port" {
 output "country_code" {
   value = lookup(
     local.normalized_country_codes,
-    lower(var.country_input),
+    "USA",
     "UNKNOWN"
   )
 }
