@@ -189,6 +189,16 @@ variable "service" {
   description = "Service to fetch port for" 
   default = "api" 
 }
+locals {
+  base_ports = {
+    web = 80
+    api = 8080
+  }
+
+  custom_ports = {
+    api = 9000
+  }
+}
 
 variable "feature_to_check" { 
   description = "Which feature flag to read" 
