@@ -200,11 +200,6 @@ locals {
   }
 }
 
-variable "feature_to_check" { 
-  description = "Which feature flag to read" 
-  default = "chat" 
-}
-
 variable "environments" { 
   description = "Environment to test presence in env_settings" 
   default = "stage" 
