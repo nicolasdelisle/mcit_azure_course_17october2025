@@ -118,3 +118,12 @@ locals {
     enterprise = 10000
   }
 }
+
+variable "greeting" {
+  description = "Map of greeting -> language"
+  default = {
+    Fr = "Bonjours"
+    En    = "hello"
+    Es = "Hola"
+  }
+}
