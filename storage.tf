@@ -12,7 +12,7 @@ resource "azurerm_storage_account" "storageaccount" {
 
 resource "azurerm_storage_container" "storagecontainermay" {
   name                  = var.storagecontainermay
-  storage_account_id    = azurerm_storage_account.azurestoagemcit.id
+  storage_account_id    = azurerm_storage_account.nicolas.id
   container_access_type = var.container_access_type
 }
 
