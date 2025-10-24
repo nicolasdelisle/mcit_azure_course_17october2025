@@ -14,7 +14,7 @@ variable "tenant_id"{
 # Ressource group storage var
 variable "storage_account_name"{
   type=string
-  default="mcitoctstorage"
+  default="azurestoagemcitstorage"
 }
 variable "resource_group_name"{
   type=string
@@ -41,6 +41,9 @@ variable "storagecontainermay"{
   type=string
   default="mcitsstoragecontmay"
 }
+variable "name"{
+type = string
+default = "nicolas"
 # blob variable
 variable "storageblobmay"{
   type=string
