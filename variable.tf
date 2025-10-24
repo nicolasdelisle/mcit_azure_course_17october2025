@@ -14,7 +14,7 @@ variable "tenant_id"{
 # Ressource group storage var
 variable "storage_account_name"{
   type=string
-  default="azurestoagemcitstorage"
+  default="test"
 }
 variable "resource_group_name"{
   type=string
