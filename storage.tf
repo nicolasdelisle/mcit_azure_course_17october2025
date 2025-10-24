@@ -1,4 +1,4 @@
-resource "azurerm_storage_account" "azurestoagemcit" {
+resource "azurerm_storage_account" "$var.name" {
   name                     = var.storage_account_name
   resource_group_name      = azurerm_resource_group.mcitrgnicolas.name
   location                 = var.location
