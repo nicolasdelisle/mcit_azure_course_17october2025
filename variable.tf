@@ -30,6 +30,15 @@ variable "account_replication_type" {
   type=string
   default="GRS"
 }
+variable "container_access_type"{
+type=string
+default="private"
+}
+variable "storagecontainermay"{
+  type=string
+  default="mcitsstoragecontmay"
+}
+# exercice
 variable "environment"{
   type=string
   default="staging"
