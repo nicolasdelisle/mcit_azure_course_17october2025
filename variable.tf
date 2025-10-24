@@ -1,3 +1,4 @@
+# credential 4needed
 variable "subscription_id"{
   type=string
 }
@@ -10,6 +11,7 @@ variable "client_secret"{
 variable "tenant_id"{
   type=string
 }
+# Ressource group storage var
 variable "storage_account_name"{
   type=string
   default="mcitoctstorage"
@@ -30,6 +32,7 @@ variable "account_replication_type" {
   type=string
   default="GRS"
 }
+#container variable
 variable "container_access_type"{
 type=string
 default="private"
@@ -37,6 +40,19 @@ default="private"
 variable "storagecontainermay"{
   type=string
   default="mcitsstoragecontmay"
+}
+# blob variable
+variable "storageblobmay"{
+  type=string
+  default="mcitsstorageblobmay"
+}
+variable "blob_type"{
+  type=string
+  default="Block"
+}
+variable "blob_source"{
+type=string
+default="some-local-file.zip"
 }
 # exercice
 variable "environment"{
