@@ -44,6 +44,7 @@ variable "storagecontainermay"{
 variable "name"{
 type = string
 default = "nicolas"
+}
 # blob variable
 variable "storageblobmay"{
   type=string
