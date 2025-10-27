@@ -14,6 +14,24 @@ variable "linux_node_version" {
   default = "20-lts"
 }
 
+variable "common_app_settings" {
+  type = map(string)
+  default = {
+    # Example environment variable for .NET apps
+    "ASPNETCORE_ENVIRONMENT" = "Development"  
+
+    # Logging level (generic, can be used in any app)
+    "LOG_LEVEL" = "Information"  
+
+    # Default for running from package (can be overridden in the app-specific map)
+    "WEBSITE_RUN_FROM_PACKAGE" = "1"  
+
+    # Any other shared settings, e.g., feature flags
+    "FEATURE_X_ENABLED" = "false"
+  }
+  description = "Common application settings shared by all web apps (Linux & Windows)."
+}
+
 # F1 is the free tier one for linux also variable for linux 
 variable "plan_sku_linux" {
   type    = string
