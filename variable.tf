@@ -12,7 +12,7 @@ variable "apps" {
     "my-linux-app" = {
       os_type       = "Linux"
       sku_name      = "B1"
-      runtime_stack = "node|18-lts"
+      runtime_stack = "NODE|18-lts"
       app_settings = {
         "ENV" = "dev"
         "LOG_LEVEL" = "Info"
@@ -21,7 +21,7 @@ variable "apps" {
     "my-windows-app" = {
       os_type       = "Windows"
       sku_name      = "P1v3"
-      runtime_stack = "dotnet|7.0"
+      runtime_stack = "DOTNET|7.0"
       app_settings = {
         "ENV" = "prod"
         "LOG_LEVEL" = "Warning"
