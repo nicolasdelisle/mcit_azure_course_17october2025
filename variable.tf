@@ -43,12 +43,23 @@ variable "linux_app_name" {
   default = "my-linux-app"
 }
 
+variable "linux_app_settings" {
+  type = map(string)
+  default = {
+    # Example: custom environment variables for Linux apps
+    "CUSTOM_LINUX_SETTING" = "true"
+    # You can add database connection strings, feature flags, or other Linux-specific configs
+    # "DB_CONNECTION_STRING" = "Server=...;Database=...;User Id=...;Password=...;"
+  }
+  description = "Linux-specific application settings that override common settings for Linux Web Apps."
+}
+
+# windows variable
 variable "plan_sku_windows" {
   type    = string
   default = "B1"
 }
 
-# windows variable
 variable "windows_app_name" {
   type    = string
   default = "my-windows-app"
