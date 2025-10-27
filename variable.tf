@@ -8,6 +8,16 @@ variable "project" {
   type    = string
   default = "linux_project"
 }
+# F1 is the free tier one for linux
+variable "plan_sku_linux" {
+  type    = string
+  default = "F1"
+}
+
+variable "plan_sku_windows" {
+  type    = string
+  default = "B1"
+}
 # credential 4needed
 variable "subscription_id"{
   type=string
