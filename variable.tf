@@ -3,6 +3,11 @@ variable "rg_name" {
   type    = string
   default = "mcitnicolas"
 }
+
+variable "project" {
+  type    = string
+  default = "linux_project"
+}
 # credential 4needed
 variable "subscription_id"{
   type=string
