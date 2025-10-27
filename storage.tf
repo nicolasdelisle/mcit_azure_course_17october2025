@@ -1,3 +1,4 @@
+/*
 resource "azurerm_storage_account" "storageaccount" {
   name                     = "${var.name}${var.storage_account_name}"
   resource_group_name      = azurerm_resource_group.rgoctobermcit.name
@@ -23,5 +24,5 @@ resource "azurerm_storage_blob" "storageblobmay" {
   type                   = var.blob_type
   source                 = var.blob_source
 }
-
+*/
 
