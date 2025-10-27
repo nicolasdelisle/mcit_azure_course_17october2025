@@ -67,10 +67,10 @@ resource "azurerm_linux_web_app" "app_linux" {
      # Or:          php_version    = "8.2"
    }
    # 2) Docker container (uncomment to use a custom image instead)
-   # application_stack {
-   #   docker_image_name   = var.linux_docker_image_name   # e.g., "mcr.microsoft.com/azuredocs/aci-helloworld"
-   #   docker_registry_url = var.linux_docker_registry_url # e.g., "https://index.docker.io"
-   # }
+    application_stack {
+      docker_image_name   = var.linux_docker_image_name   # e.g., "mcr.microsoft.com/azuredocs/aci-helloworld"
+      docker_registry_url = var.linux_docker_registry_url # e.g., "https://index.docker.io"
+    }
  }
  app_settings = merge(
    var.common_app_settings,
