@@ -64,7 +64,22 @@ variable "windows_app_name" {
   type    = string
   default = "my-windows-app"
 }
+variable "windows_dotnet_version" {
+  type        = string
+  default     = "v6.0"
+  description = "The .NET version for the Windows Web App (e.g., 'v6.0', 'v7.0')."
+}
 
+variable "windows_app_settings" {
+  type = map(string)
+  default = {
+    # Example: custom environment variables for Windows apps
+    "CUSTOM_WINDOWS_SETTING" = "true"
+    # You can add database connection strings, feature flags, or other Windows-specific configs
+    # "DB_CONNECTION_STRING" = "Server=...;Database=...;User Id=...;Password=...;"
+  }
+  description = "Windows-specific application settings that override common settings for Windows Web Apps."
+}
 
 # credential 4needed
 variable "subscription_id"{
