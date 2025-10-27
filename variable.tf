@@ -8,16 +8,29 @@ variable "project" {
   type    = string
   default = "linux_project"
 }
-# F1 is the free tier one for linux
+# F1 is the free tier one for linux also variable for linux 
 variable "plan_sku_linux" {
   type    = string
   default = "F1"
+}
+
+variable "linux_app_name" {
+  type    = string
+  default = "my-linux-app"
 }
 
 variable "plan_sku_windows" {
   type    = string
   default = "B1"
 }
+
+# windows variable
+variable "windows_app_name" {
+  type    = string
+  default = "my-windows-app"
+}
+
+
 # credential 4needed
 variable "subscription_id"{
   type=string
