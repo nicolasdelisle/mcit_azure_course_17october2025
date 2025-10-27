@@ -8,6 +8,12 @@ variable "project" {
   type    = string
   default = "linux_project"
 }
+
+variable "linux_node_version" {
+  type    = string
+  default = "20-lts"
+}
+
 # F1 is the free tier one for linux also variable for linux 
 variable "plan_sku_linux" {
   type    = string
