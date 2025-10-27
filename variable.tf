@@ -1,3 +1,8 @@
+# class 27 october
+variable "rg_name" {
+  type    = string
+  default = "mcitnicolas"
+}
 # credential 4needed
 variable "subscription_id"{
   type=string
