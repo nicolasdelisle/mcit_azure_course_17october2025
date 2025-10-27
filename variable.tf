@@ -1,4 +1,36 @@
-# class 27 october
+# class 27_october2 
+
+variable "apps" {
+  description = "Map of web apps to create with configuration"
+  type = map(object({
+    os_type       = string
+    sku_name      = string
+    runtime_stack = string
+    app_settings  = map(string)
+  }))
+  default = {
+    "my-linux-app" = {
+      os_type       = "Linux"
+      sku_name      = "B1"
+      runtime_stack = "NODE|18-lts"
+      app_settings = {
+        "ENV" = "dev"
+        "LOG_LEVEL" = "Info"
+      }
+    }
+    "my-windows-app" = {
+      os_type       = "Windows"
+      sku_name      = "P1v3"
+      runtime_stack = "DOTNET|7.0"
+      app_settings = {
+        "ENV" = "prod"
+        "LOG_LEVEL" = "Warning"
+      }
+    }
+  }
+}
+
+# class 27_october
 variable "rg_name" {
   type    = string
   default = "mcitnicolas"
