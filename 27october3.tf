@@ -1,3 +1,4 @@
+/*
 resource "azurerm_resource_group" "rg" {
  name     = "rg-webapps-foreach"
  location = "Canada Central"
@@ -52,3 +53,4 @@ output "app_urls" {
    { for k, v in azurerm_windows_web_app.windows: k => v.default_hostname }
  )
 }
+*/
