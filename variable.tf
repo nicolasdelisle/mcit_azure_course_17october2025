@@ -12,11 +12,6 @@ variable "project" {
   default = "linux_project"
 }
 
-variable "linux_node_version" {
-  type    = string
-  default = "20-lts"
-}
-
 variable "common_app_settings" {
   type = map(string)
   default = {
@@ -39,6 +34,11 @@ variable "common_app_settings" {
 variable "plan_sku_linux" {
   type    = string
   default = "F1"
+}
+
+variable "linux_node_version" {
+  type    = string
+  default = "20-lts"
 }
 
 variable "linux_app_name" {
