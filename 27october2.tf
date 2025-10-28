@@ -1,3 +1,4 @@
+/*
 resource "azurerm_resource_group" "rg" {
   name     = "rg-webapps-foreach"
   location = "Canada Central"
@@ -76,6 +77,7 @@ output "app_urls" {
     windows_app = azurerm_windows_web_app.windows.default_hostname
   }
 }
+*/
 /* codethat was given using variable of first exercice try again without changing the code 
 resource "azurerm_resource_group" "rg" {
  name     = "rg-webapps-foreach"
