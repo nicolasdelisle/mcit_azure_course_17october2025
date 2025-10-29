@@ -1,5 +1,5 @@
 # class 29_october
-variable "resource_group_name" {
+variable "resource_gname" {
  description = "Name of the RG to create/use"
  type        = string
 }
