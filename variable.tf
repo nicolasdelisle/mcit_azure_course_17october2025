@@ -1,3 +1,74 @@
+# class 29_october
+variable "resource_group_name" {
+ description = "Name of the RG to create/use"
+ type        = string
+}
+variable "resource_group_location" {
+ description = "Location for the RG (used if it doesn't exist)"
+ type        = string
+}
+# Map of web apps to create. Keys must be unique IDs you choose.
+# Each item: name, location, env, runtime, and optional app_settings map.
+variable "webapps" {
+ description = "Map of Linux Web Apps to deploy"
+ type = map(object({
+   name         : string
+   location     : string
+   env          : string          # e.g., dev/qa/prod
+   runtime      : string          # e.g., "PYTHON|3.11", "NODE|18-lts"
+   app_settings : map(string)     # optional settings per app (can be {})
+ }))
+}
+# Example: pick SKU by environment with lookup(); defaults to P1v3 if env missing.
+variable "sku_by_env" {
+ description = "Map from env to App Service Plan SKU"
+ type        = map(string)
+ default = {
+   dev  = "B1"
+   qa   = "S1"
+   prod = "P1v3"
+ }
+}
+variable "tags" {
+ description = "Common tags"
+ type        = map(string)
+ default     = {}
+}
+# Resource Group (create if absent)
+resource "azurerm_resource_group" "rg" {
+ name     = var.resource_group_name
+ location = var.resource_group_location
+ tags     = var.tags
+}
+# Distinct set of locations needed for Service Plans (one per location)
+locals {
+ locations = toset([for w in var.webapps : w.location])
+}
+# App Service Plan per location (Linux)
+resource "azurerm_service_plan" "asp" {
+ for_each = local.locations
+ name                = "asp-${each.value}"
+ resource_group_name = azurerm_resource_group.rg.name
+ location            = each.value
+ os_type  = "Linux"
+ sku_name = "B1" # temporary; overridden below via lifecycle block or use a shared default
+ tags     = var.tags
+}
+# Because each app might want a different SKU by env,
+# we set plan SKUs using per-app lookup by env.
+# A simple approach: one plan per LOCATION **and** ENV (so SKU can differ).
+# If you want one plan per location only, skip this block and keep one SKU.
+# ---- Alternate: plan key is location+env so each env can have its own SKU
+locals {
+ plans = {
+   for k, v in var.webapps :
+   "${v.location}-${v.env}" => {
+     location = v.location
+     env      = v.env
+     sku      = lookup(var.sku_by_env, v.env, "P1v3") # <--- lookup() with default
+   }
+ }
+}
 # class 27_october2 
 #change name of variable in tf file to make a succesful plan 
 
