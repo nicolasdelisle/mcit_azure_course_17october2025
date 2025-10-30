@@ -1,4 +1,5 @@
 
+/* code given for assignement
 # Recreate service plans keyed by location-env (overrides earlier single-per-location approach)
 # If you prefer ONE plan per location, comment this block and use the first asp.
 resource "azurerm_service_plan" "asp_env" {
@@ -42,3 +43,4 @@ output "webapp_hostnames" {
    for k, v in azurerm_linux_web_app.app : k => v.default_host_name
  }
 }
+*/
