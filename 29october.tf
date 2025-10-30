@@ -1,7 +1,7 @@
 # Resource Group (create if absent)
 resource "azurerm_resource_group" "rg_new" {
-  name     = var.second_resource_group_name
-  location = var.resource_group_location
+  name     = lookup(var.second_resource_group_name, "default", "rg_new")
+  location = lookup(var.resource_group_location, "default", "canadacentral")
   tags     = var.tags
 }
 
