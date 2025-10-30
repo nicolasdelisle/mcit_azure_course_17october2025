@@ -34,41 +34,7 @@ variable "tags" {
  type        = map(string)
  default     = {}
 }
-# Resource Group (create if absent)
-resource "azurerm_resource_group" "rg" {
- name     = var.resource_group_name
- location = var.resource_group_location
- tags     = var.tags
-}
-# Distinct set of locations needed for Service Plans (one per location)
-locals {
- locations = toset([for w in var.webapps : w.location])
-}
-# App Service Plan per location (Linux)
-resource "azurerm_service_plan" "asp" {
- for_each = local.locations
- name                = "asp-${each.value}"
- resource_group_name = azurerm_resource_group.rg.name
- location            = each.value
- os_type  = "Linux"
- sku_name = "B1" # temporary; overridden below via lifecycle block or use a shared default
- tags     = var.tags
-}
-# Because each app might want a different SKU by env,
-# we set plan SKUs using per-app lookup by env.
-# A simple approach: one plan per LOCATION **and** ENV (so SKU can differ).
-# If you want one plan per location only, skip this block and keep one SKU.
-# ---- Alternate: plan key is location+env so each env can have its own SKU
-locals {
- plans = {
-   for k, v in var.webapps :
-   "${v.location}-${v.env}" => {
-     location = v.location
-     env      = v.env
-     sku      = lookup(var.sku_by_env, v.env, "P1v3") # <--- lookup() with default
-   }
- }
-}
+
 # class 27_october2 
 #change name of variable in tf file to make a succesful plan 
 
