@@ -1,3 +1,9 @@
+# class 29 october
+  output "webapp_hostnames" {
+  value = {
+    for k, v in azurerm_linux_web_app.app : k => v.default_host_name
+  }
+}
 /*
 # MCIT Exercise 1: Concatenate first + last name
 output "full_name" {
