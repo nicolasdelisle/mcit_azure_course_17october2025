@@ -220,9 +220,8 @@ output "currency_mexico_upper" {
 
 # class 22 october
 
-##########################################
 # MCIT Lookup Challenge Questions
-##########################################
+
 
 # 1️⃣ Plan Quota
 # Use lookup() to return the quota for a selected plan (free, pro, enterprise).
@@ -330,4 +329,5 @@ output "feature_status" {
     false
   ) ? "enabled" : "disabled"
 }
+
 */
