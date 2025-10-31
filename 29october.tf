@@ -48,6 +48,8 @@ resource "azurerm_service_plan" "asp_env" {
   sku_name            = each.value.sku # <--- comes from lookup(var.sku_by_env,...)
   tags                = var.tags
 }
+  site_config {}
+}
 
 # Linux Web Apps – for_each over the webapps map
 resource "azurerm_linux_web_app" "app" {
