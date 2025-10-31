@@ -13,7 +13,7 @@ variable "resource_group_location" {
 # Each item: name, location, env, runtime, and optional app_settings map.
 variable "webapps" {
  description = "Map of Linux Web Apps to deploy"
- type = map(object({
+ {
    name         : string
    location     : string
    env          : string          # e.g., dev/qa/prod
