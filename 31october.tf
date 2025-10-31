@@ -61,9 +61,9 @@ resource "azurerm_linux_virtual_machine" "vm" {
   resource_group_name = azurerm_resource_group.rg_new.name
   location            = azurerm_resource_group.rg_new.location
   size                = "Standard_B2s"
-  admin_username      = "azureuser"
+  admin_username      = var.admin_username
   network_interface_ids = [azurerm_network_interface.nic.id]
-  admin_password = "Nicolas123"
+  admin_password = var.admin_password
   os_disk {
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
