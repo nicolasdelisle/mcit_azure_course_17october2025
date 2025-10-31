@@ -54,7 +54,7 @@ resource "azurerm_linux_web_app" "app" {
   for_each = var.webapps
 
   name                = each.value.name
-  resource_group_name = azurerm_resource_group.rg.name
+  resource_group_name = azurerm_resource_group.rg_new.name
   location            = each.value.location
 
   # Bind to the plan matched by location-env
