@@ -51,19 +51,15 @@ resource "azurerm_service_plan" "asp_env" {
 
 # Linux Web Apps – for_each over the webapps map
 resource "azurerm_linux_web_app" "app" {
-  for_each            = var.webapps
+  for_each = var.webapps
+
   name                = each.value.name
+  resource_group_name = azurerm_resource_group.rg_new.name
   location            = each.value.location
-  resource_group_name = azurerm_resource_group.rg.name
-  service_plan_id     = azurerm_service_plan.asp_env.id
-
-  site_config {
-    linux_fx_version = each.value.runtime   
+    site_config {
+    linux_fx_version = each.value.runtime  # e.g., "PYTHON|3.11"
+    ftps_state       = "Disabled"
   }
-
-  app_settings = each.value.app_settings
-}
-
 
   # Bind to the plan matched by location-env
   service_plan_id = azurerm_service_plan.asp_env["${each.value.location}-${each.value.env}"].id
