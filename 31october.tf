@@ -1,22 +1,22 @@
-
+# works with code of 29 october.tf
 resource "azurerm_virtual_network" "vnet" {
   name                = "my-vnet"
   address_space       = ["10.0.0.0/16"]
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg_new.location
+  resource_group_name = azurerm_resource_group.rg_new.name
 }
  
 resource "azurerm_subnet" "subnet" {
   name                 = "my-subnet"
-  resource_group_name  = azurerm_resource_group.rg.name
+  resource_group_name  = azurerm_resource_group.rg_new.name
   virtual_network_name = azurerm_virtual_network.vnet.name
   address_prefixes     = ["10.0.1.0/24"]
 }
  
 resource "azurerm_network_interface" "nic" {
   name                = "my-nic"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg_new.location
+  resource_group_name = azurerm_resource_group.rg_new.name
  
   ip_configuration {
     name                          = "internal"
@@ -28,15 +28,15 @@ resource "azurerm_network_interface" "nic" {
  
 resource "azurerm_public_ip" "pip" {
   name                = "my-public-ip"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg_new.location
+  resource_group_name = azurerm_resource_group.rg_new.name
   allocation_method   = "Dynamic"
 }
  
 resource "azurerm_network_security_group" "nsg" {
   name                = "my-nsg"
-  location            = azurerm_resource_group.rg.location
-  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg_new.location
+  resource_group_name = azurerm_resource_group.rg_new.name
  
   security_rule {
     name                       = "AllowSSH"
@@ -58,8 +58,8 @@ resource "azurerm_network_interface_security_group_association" "nsg_assoc" {
  
 resource "azurerm_linux_virtual_machine" "vm" {
   name                = "myvm01"
-  resource_group_name = azurerm_resource_group.rg.name
-  location            = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg_new.name
+  location            = azurerm_resource_group.rg_new.location
   size                = "Standard_B2s"
   admin_username      = "azureuser"
   network_interface_ids = [azurerm_network_interface.nic.id]
