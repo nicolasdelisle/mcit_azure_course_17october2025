@@ -47,7 +47,7 @@ resource "azurerm_service_plan" "asp_env" {
   os_type             = "Linux"
   sku_name            = each.value.sku # <--- comes from lookup(var.sku_by_env,...)
   tags                = var.tags
-}
+
   site_config {}
 }
 
