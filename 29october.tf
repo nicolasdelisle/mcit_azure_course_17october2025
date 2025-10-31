@@ -56,17 +56,7 @@ resource "azurerm_linux_web_app" "app" {
   name                = each.value.name
   resource_group_name = azurerm_resource_group.rg_new.name
   location            = each.value.location
-site_config {
-  ftps_state = "Disabled"
 
-  application_stack {
-    python_version = "3.11"    # for Python
-    # OR
-    node_version   = "18-lts"  # for Node.js
-    # OR
-    dotnet_version = "6.0"     # for .NET
-  }
-}
 
 
   # Bind to the plan matched by location-env
