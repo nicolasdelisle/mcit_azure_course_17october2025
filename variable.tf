@@ -1,3 +1,6 @@
+# class october 31
+variable "admin_username" {}
+variable "admin_password" {}
 # class 29_october
 variable "second_resource_group_name" {
  description = "Name of the RG to create/use"
