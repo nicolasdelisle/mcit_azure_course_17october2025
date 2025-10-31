@@ -65,7 +65,7 @@ resource "azurerm_linux_web_app" "app" {
   https_only = true
   tags       = merge(var.tags, { env = each.value.env })
      site_config {}
-}
+
 
   # Demonstrating lookup() for an optional app setting with a default:
   # If FEATURE_FLAG not provided per app, default to "off".
