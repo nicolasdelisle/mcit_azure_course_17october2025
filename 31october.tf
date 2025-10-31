@@ -1,4 +1,4 @@
-/*
+
 resource "azurerm_virtual_network" "vnet" {
   name                = "my-vnet"
   address_space       = ["10.0.0.0/16"]
@@ -81,4 +81,4 @@ resource "azurerm_linux_virtual_machine" "vm" {
     public_key = file("~/.ssh/id_rsa.pub")
   }
 }
-*/
+
