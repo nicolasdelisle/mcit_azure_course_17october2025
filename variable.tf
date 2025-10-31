@@ -12,15 +12,25 @@ variable "resource_group_location" {
 # Map of web apps to create. Keys must be unique IDs you choose.
 # Each item: name, location, env, runtime, and optional app_settings map.
 variable "webapps" {
- description = "Map of Linux Web Apps to deploy"
+  description = "Map of Linux Web Apps to deploy"
   type = map(object({
-   name         : string
-   location     : string
-   env          : string          # e.g., dev/qa/prod
-   runtime      : string          # e.g., "PYTHON|3.11", "NODE|18-lts"
-   app_settings : map(string)     # optional settings per app (can be {})
- }))
+    name         = string
+    location     = string
+    env          = string
+    runtime      = string
+    app_settings = map(string)
+  }))
+  default = {
+    app1 = {
+      name         = "default-app"
+      location     = "eastus"
+      env          = "dev"
+      runtime      = "PYTHON|3.11"
+      app_settings = {}
+    }
+  }
 }
+
 # Example: pick SKU by environment with lookup(); defaults to P1v3 if env missing.
 variable "sku_by_env" {
  description = "Map from env to App Service Plan SKU"
