@@ -25,7 +25,7 @@ variable "webapps" {
       name         = "default-app"
       location     = "eastus"
       env          = "dev"
-      
+      runtime      = "PYTHON|3.11"
       app_settings = {}
     }
   }
