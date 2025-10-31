@@ -17,7 +17,7 @@ variable "webapps" {
     name         = string
     location     = string
     env          = string
-    runtime      = string
+    
     app_settings = map(string)
   }))
   default = {
@@ -25,7 +25,7 @@ variable "webapps" {
       name         = "default-app"
       location     = "eastus"
       env          = "dev"
-      runtime      = "PYTHON|3.11"
+     
       app_settings = {}
     }
   }
