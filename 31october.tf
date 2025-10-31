@@ -63,7 +63,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
   size                = "Standard_B2s"
   admin_username      = "azureuser"
   network_interface_ids = [azurerm_network_interface.nic.id]
- 
+  admin_password = file("./id_rsa.pub")
   os_disk {
     caching              = "ReadWrite"
     storage_account_type = "Standard_LRS"
@@ -76,9 +76,5 @@ resource "azurerm_linux_virtual_machine" "vm" {
     version   = "latest"
   }
  
-  admin_password {
-    username   = "azureuser"
-    admin_password = file("./id_rsa.pub")
-  }
-}
+
 
