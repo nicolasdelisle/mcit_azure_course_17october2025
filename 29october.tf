@@ -15,7 +15,7 @@ resource "azurerm_service_plan" "asp" {
   for_each = local.locations
 
   name                = "asp-${each.value}"
-  resource_group_name = azurerm_resource_group.rg.name
+  resource_group_name = azurerm_resource_group.rg_new.name
   location            = each.value
   os_type             = "Linux"
   sku_name            = "B1" # temporary; overridden below via lifecycle block or use a shared default
