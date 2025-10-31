@@ -2,10 +2,12 @@
 variable "second_resource_group_name" {
  description = "Name of the RG to create/use"
  type        = string
+ default     = "rg_new"
 }
 variable "resource_group_location" {
  description = "Location for the RG (used if it doesn't exist)"
  type        = string
+ default     = "canadacentral"
 }
 # Map of web apps to create. Keys must be unique IDs you choose.
 # Each item: name, location, env, runtime, and optional app_settings map.
