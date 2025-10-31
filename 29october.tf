@@ -42,7 +42,7 @@ resource "azurerm_service_plan" "asp_env" {
   for_each = local.plans
 
   name                = "asp-${replace(each.key, " ", "")}"
-  resource_group_name = azurerm_resource_group.rg.name
+  resource_group_name = azurerm_resource_group.rg_new.name
   location            = each.value.location
   os_type             = "Linux"
   sku_name            = each.value.sku # <--- comes from lookup(var.sku_by_env,...)
