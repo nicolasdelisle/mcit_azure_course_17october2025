@@ -78,7 +78,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
  
   admin_password {
     username   = "azureuser"
-    public_key = file("./id_rsa.pub")
+    admin_password = file("./id_rsa.pub")
   }
 }
 
