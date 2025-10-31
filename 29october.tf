@@ -63,11 +63,6 @@ resource "azurerm_linux_web_app" "app" {
   https_only = true
   tags       = merge(var.tags, { env = each.value.env })
 
-  site_config {
-    linux_fx_version = each.value.runtime  # e.g., "PYTHON|3.11"
-    ftps_state       = "Disabled"
-  }
-
   # Demonstrating lookup() for an optional app setting with a default:
   # If FEATURE_FLAG not provided per app, default to "off".
   app_settings = merge(
