@@ -1,7 +1,7 @@
 # class 29 october
   output "webapp_hostnames" {
   value = {
-    for k, v in azurerm_linux_web_app.app : k => v.default_site_hostname
+    for k, v in azurerm_linux_web_app.app : k => try(v.default_site_hostname, "not yet created")
   }
 }
 /*
