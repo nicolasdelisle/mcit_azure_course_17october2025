@@ -1,4 +1,167 @@
 # class october 31
+
+variable "vnet_name" {
+  description = "Virtual Network name"
+  type        = string
+  default     = "my-vnet"
+}
+
+variable "vnet_address_space" {
+  description = "Address space for the VNet"
+  type        = string
+  default     = "10.0.0.0/16"
+}
+
+variable "subnet_name" {
+  description = "Subnet name"
+  type        = string
+  default     = "my-subnet"
+}
+
+variable "subnet_prefix" {
+  description = "Subnet address prefix"
+  type        = string
+  default     = "10.0.1.0/24"
+}
+
+variable "public_ip_name" {
+  description = "Public IP name"
+  type        = string
+  default     = "my-public-ip"
+}
+
+variable "public_ip_allocation_method" {
+  description = "Public IP allocation method"
+  type        = string
+  default     = "Dynamic"
+}
+
+variable "nic_name" {
+  description = "Network Interface name"
+  type        = string
+  default     = "my-nic"
+}
+
+variable "ip_config_name" {
+  description = "IP configuration name for NIC"
+  type        = string
+  default     = "internal"
+}
+
+variable "private_ip_allocation" {
+  description = "Private IP allocation type"
+  type        = string
+  default     = "Dynamic"
+}
+
+variable "nsg_name" {
+  description = "Network Security Group name"
+  type        = string
+  default     = "my-nsg"
+}
+
+variable "nsg_rule_name" {
+  description = "NSG rule name"
+  type        = string
+  default     = "AllowSSH"
+}
+
+variable "nsg_rule_priority" {
+  description = "NSG rule priority"
+  type        = number
+  default     = 1001
+}
+
+variable "nsg_rule_direction" {
+  description = "Inbound or Outbound"
+  type        = string
+  default     = "Inbound"
+}
+
+variable "nsg_rule_access" {
+  description = "Allow or Deny access"
+  type        = string
+  default     = "Allow"
+}
+
+variable "nsg_rule_protocol" {
+  description = "Protocol (Tcp, Udp, *)"
+  type        = string
+  default     = "Tcp"
+}
+
+variable "nsg_rule_source_port" {
+  description = "Source port range"
+  type        = string
+  default     = "*"
+}
+
+variable "nsg_rule_destination_port" {
+  description = "Destination port range"
+  type        = string
+  default     = "22"
+}
+
+variable "nsg_rule_source_address" {
+  description = "Source address prefix"
+  type        = string
+  default     = "*"
+}
+
+variable "nsg_rule_destination_address" {
+  description = "Destination address prefix"
+  type        = string
+  default     = "*"
+}
+
+variable "vm_name" {
+  description = "Virtual Machine name"
+  type        = string
+  default     = "myvm01"
+}
+
+variable "vm_size" {
+  description = "Size of the VM"
+  type        = string
+  default     = "Standard_B2s"
+}
+
+variable "os_disk_caching" {
+  description = "OS disk caching type"
+  type        = string
+  default     = "ReadWrite"
+}
+
+variable "os_disk_type" {
+  description = "OS disk storage account type"
+  type        = string
+  default     = "Standard_LRS"
+}
+
+variable "image_publisher" {
+  description = "Image publisher"
+  type        = string
+  default     = "Canonical"
+}
+
+variable "image_offer" {
+  description = "Image offer"
+  type        = string
+  default     = "0001-com-ubuntu-server-jammy"
+}
+
+variable "image_sku" {
+  description = "Image SKU"
+  type        = string
+  default     = "22_04-lts"
+}
+
+variable "image_version" {
+  description = "Image version"
+  type        = string
+  default     = "latest"
+}
+
 variable "admin_username" {}
 variable "admin_password" {}
 # class 29_october
