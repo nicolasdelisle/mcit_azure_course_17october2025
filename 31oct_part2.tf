@@ -1,3 +1,4 @@
+/*
 resource "azurerm_virtual_network" "vnet" {
   name                = var.vnet_name
   address_space       = [var.vnet_address_space]
@@ -76,3 +77,4 @@ resource "azurerm_linux_virtual_machine" "vm" {
     version   = var.image_version
   }
 }
+*/
