@@ -77,7 +77,7 @@ resource "azurerm_linux_virtual_machine" "vm" {
     version   = var.image_version
   }
 }
-
+//load balancer
 resource "azurerm_network_interface_backend_address_pool_association" "nic_bepool" {
  network_interface_id    = azurerm_network_interface.nic[count.index].id
  ip_configuration_name   = "ipconfig1"
