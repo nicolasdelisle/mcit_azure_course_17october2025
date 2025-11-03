@@ -1,3 +1,4 @@
+/*
 # works with code of 29 october.tf
 resource "azurerm_virtual_network" "vnet" {
   name                = "my-vnet"
@@ -77,4 +78,4 @@ resource "azurerm_linux_virtual_machine" "vm" {
   }
  
 }
-
+*/
