@@ -1,3 +1,9 @@
+# class november 3
+variable "vm_names" {
+  description = "List of VM names to create"
+  type        = list, string
+  default     = ["msuburb1", "msuburb2", "msuburb3", "msuburb4", "msuburb5"]
+}
 # class october 31
 
 variable "vnet_name" {
