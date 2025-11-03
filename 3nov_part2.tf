@@ -77,11 +77,13 @@ resource "azurerm_linux_virtual_machine" "vm" {
     version   = var.image_version
   }
 }
+
 resource "azurerm_network_interface_backend_address_pool_association" "nic_bepool" {
  network_interface_id    = azurerm_network_interface.nic[count.index].id
  ip_configuration_name   = "ipconfig1"
  backend_address_pool_id = azurerm_lb_backend_address_pool.bepool.id
 }
+
 resource "azurerm_lb_rule" "http" {
  name                           = "http-rule"
  loadbalancer_id                = azurerm_lb.lb.id
@@ -91,3 +93,18 @@ resource "azurerm_lb_rule" "http" {
  frontend_ip_configuration_name = "feip"
  backend_address_pool_ids       = [azurerm_lb_backend_address_pool.bepool.id]
  probe_id                       = azurerm_lb_probe.
+
+resource "azurerm_lb_backend_address_pool" "bepool" {
+ name            = "be-pool"
+ loadbalancer_id = azurerm_lb.lb.id
+}
+
+resource "azurerm_lb_probe" "http" {
+ name            = "http-probe"
+ loadbalancer_id = azurerm_lb.lb.id
+ protocol        = "Http"
+ port            = 80
+ request_path    = "/"
+ interval_in_seconds = 5
+ number_of_probes    = 2
+}
