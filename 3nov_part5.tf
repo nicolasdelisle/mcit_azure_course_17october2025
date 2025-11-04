@@ -146,11 +146,12 @@ resource "azurerm_application_gateway" "appgw" {
   sku {
     name = "WAF_v2"
     tier = "WAF_v2"
+    capacity = 2
   }
 
   gateway_ip_configuration {
     name      = "gw-ipcfg"
-    subnet_id = azurerm_subnet.appgw_subnet.id
+    subnet_id = azurerm_subnet.subnet.id
   }
 
   frontend_port {
@@ -160,35 +161,34 @@ resource "azurerm_application_gateway" "appgw" {
 
   frontend_ip_configuration {
     name                 = "public-fe"
-    public_ip_address_id = azurerm_public_ip.appgw_pip.id
+    public_ip_address_id = azurerm_public_ip.lb_pip.id
   }
 
   backend_address_pool {
     name = "pool-servers"
 
-    # Dynamically pull the private IPs of all VMs
     ip_addresses = [
       for nic in azurerm_network_interface.nic : nic.ip_configuration[0].private_ip_address
     ]
   }
 
   backend_http_settings {
-    name                  = "bhs-https"
-    port                  = 443
-    protocol              = "Https"
+    name                              = "bhs-https"
+    port                              = 443
+    protocol                          = "Https"
     pick_host_name_from_backend_address = true
-    request_timeout       = 30
-    probe_name            = "probe-https"
+    request_timeout                   = 30
+    probe_name                        = "probe-https"
   }
 
   probe {
-    name                = "probe-https"
-    protocol            = "Https"
-    host                = "127.0.0.1" # simple health probe
-    path                = "/health"
-    interval            = 30
-    timeout             = 30
-    unhealthy_threshold = 3
+    name                                   = "probe-https"
+    protocol                               = "Https"
+    host                                   = "127.0.0.1"
+    path                                   = "/health"
+    interval                               = 30
+    timeout                                = 30
+    unhealthy_threshold                    = 3
     pick_host_name_from_backend_http_settings = true
   }
 
@@ -197,7 +197,7 @@ resource "azurerm_application_gateway" "appgw" {
     frontend_ip_configuration_name = "public-fe"
     frontend_port_name             = "fp-443"
     protocol                       = "Https"
-    ssl_certificate_name           = "tls-cert" # optional if you skip SSL
+    ssl_certificate_name           = "tls-cert" # optional if you have a cert
   }
 
   request_routing_rule {
@@ -207,7 +207,15 @@ resource "azurerm_application_gateway" "appgw" {
     backend_address_pool_name  = "pool-servers"
     backend_http_settings_name = "bhs-https"
   }
+
+  waf_configuration {
+    enabled          = true
+    firewall_mode    = "Prevention"
+    rule_set_type    = "OWASP"
+    rule_set_version = "3.2"
+  }
 }
+
 
 resource "azurerm_public_ip" "example" {
 
