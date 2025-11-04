@@ -166,12 +166,11 @@ resource "azurerm_application_gateway" "waf_ag" {
 
   backend_address_pool {
     name = "lb-backend-pool"
-    backend_addresses = [
-      {
-        fqdn = azurerm_lb.lb.frontend_ip_configuration[0].private_ip_address
-      }
-    ]
-  }
+    backend_addresses = 
+    ip_addresses = [
+    for nic in azurerm_network_interface.nic : nic.private_ip_address
+  ]
+}
 
   http_listener {
     name                           = "http-listener"
