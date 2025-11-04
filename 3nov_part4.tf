@@ -164,13 +164,14 @@ resource "azurerm_application_gateway" "waf_ag" {
     port = 80
   }
 
-  backend_address_pool {
-    name = "lb-backend-pool"
-    backend_addresses = 
-    ip_addresses = [
+ backend_address_pool {
+  name = "backend-pool"
+
+  ip_addresses = [
     for nic in azurerm_network_interface.nic : nic.private_ip_address
   ]
 }
+
 
   http_listener {
     name                           = "http-listener"
