@@ -135,3 +135,70 @@ resource "azurerm_lb_probe" "http" {
  interval_in_seconds = 5
  number_of_probes    = 2
 }
+
+//waf web application firewall
+
+resource "azurerm_application_gateway" "waf_ag" {
+  name                = "waf-ag"
+  location            = var.resource_group_location
+  resource_group_name = var.second_resource_group_name
+  sku {
+    name     = "WAF_v2"
+    tier     = "WAF_v2"
+    capacity = 2
+  }
+
+  gateway_ip_configuration {
+    name      = "gateway-ip"
+    subnet_id = azurerm_subnet.subnet.id
+  }
+
+  frontend_ip_configuration {
+    name                 = "feip"
+    public_ip_address_id = azurerm_public_ip.lb_pip.id
+  }
+
+  frontend_port {
+    name = "http-port"
+    port = 80
+  }
+
+  backend_address_pool {
+    name = "lb-backend-pool"
+    backend_addresses = [
+      {
+        fqdn = azurerm_lb.lb.frontend_ip_configuration[0].private_ip_address
+      }
+    ]
+  }
+
+  http_listener {
+    name                           = "http-listener"
+    frontend_ip_configuration_name = "feip"
+    frontend_port_name             = "http-port"
+    protocol                       = "Http"
+  }
+
+  request_routing_rule {
+    name                       = "rule1"
+    rule_type                  = "Basic"
+    http_listener_name         = "http-listener"
+    backend_address_pool_name  = "lb-backend-pool"
+    backend_http_settings_name = "default-http-settings"
+  }
+
+  backend_http_settings {
+    name                  = "default-http-settings"
+    cookie_based_affinity = "Disabled"
+    port                  = 80
+    protocol              = "Http"
+    request_timeout       = 20
+  }
+
+  waf_configuration {
+    enabled          = true
+    firewall_mode    = "Prevention"
+    rule_set_type    = "OWASP"
+    rule_set_version = "3.2"
+  }
+}
