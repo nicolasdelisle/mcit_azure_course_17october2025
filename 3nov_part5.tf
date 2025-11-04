@@ -246,7 +246,7 @@ resource "azurerm_dns_a_record" "example" {
 
   name                = "app"
 
-  zone_name           = azurerm_dns_zone.exemple.name
+  zone_name           = azurerm_dns_zone.example.name
 
   resource_group_name = azurerm_resource_group.rg_new.name
 
