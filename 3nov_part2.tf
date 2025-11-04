@@ -77,7 +77,20 @@ resource "azurerm_linux_virtual_machine" "vm" {
     version   = var.image_version
   }
 }
-//load balancer
+//load balancer was missing the ressource lb 
+
+resource "azurerm_lb" "lb" {
+  name                = "myLoadBalancer"
+  location            = var.resource_group_location
+  resource_group_name = var.second_resource_group_name
+  sku                 = "Standard"
+
+  frontend_ip_configuration {
+    name                 = "msload"
+    public_ip_address_id = azurerm_public_ip.pip.id
+  }
+}
+
 resource "azurerm_network_interface_backend_address_pool_association" "nic_bepool" {
  network_interface_id    = azurerm_network_interface.nic[count.index].id
  ip_configuration_name   = "ipconfig1"
