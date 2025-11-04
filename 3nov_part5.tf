@@ -222,9 +222,9 @@ resource "azurerm_public_ip" "example" {
 
   name                = "myPublicIP"
 
-  location            = azurerm_resource_group.example.location
+  location            = azurerm_resource_group.rg_new.location
 
-  resource_group_name = azurerm_resource_group.example.name
+  resource_group_name = azurerm_resource_group.rg_new.name
 
   allocation_method   = "Static"
 
