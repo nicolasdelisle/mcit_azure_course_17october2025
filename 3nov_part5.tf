@@ -221,7 +221,7 @@ resource "azurerm_public_ip" "example" {
 
 resource "azurerm_dns_zone" "example" {
 
-  name                = "mydomain.com"
+  name                = "nicolasdelisle.com"
 
   resource_group_name = azurerm_resource_group.example.name
 
@@ -240,5 +240,5 @@ resource "azurerm_dns_a_record" "example" {
   records             = [azurerm_public_ip.example.ip_address]
 
 }
-MyDomain
+
  
