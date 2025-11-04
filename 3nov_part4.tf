@@ -1,5 +1,5 @@
-
-// add a web app firewall to the load balancer
+/*
+// add a web app firewall to the load balancer using port 80 only
 resource "azurerm_virtual_network" "vnet" {
   name                = var.vnet_name
   address_space       = [var.vnet_address_space]
@@ -203,4 +203,4 @@ resource "azurerm_application_gateway" "waf_ag" {
     rule_set_version = "3.2"
   }
 }
-
+*/
