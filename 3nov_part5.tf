@@ -138,71 +138,77 @@ resource "azurerm_lb_probe" "http" {
 }
 
 // waf for 443
-# 2) Application Gateway (WAF_v2) with the policy linked
 resource "azurerm_application_gateway" "appgw" {
- name                = "appgw-waf"
- location            = azurerm_resource_group.rg.location
- resource_group_name = azurerm_resource_group.rg.name
- sku {
-   name = "WAF_v2"
-   tier = "WAF_v2"
- }
- # <- this is the "attach": point the AppGW to the WAF policy
- firewall_policy_id = azurerm_web_application_firewall_policy.waf.id
- gateway_ip_configuration {
-   name      = "gw-ipcfg"
-   subnet_id = azurerm_subnet.appgw_subnet.id
- }
- frontend_port {
-   name = "fp-443"
-   port = 443
- }
- frontend_ip_configuration {
-   name                 = "public-fe"
-   public_ip_address_id = azurerm_public_ip.appgw_pip.id
- }
- backend_address_pool {
-   name = "pool-servers"
-   # Prefer: VM NICs / private IPs / FQDNs of your app.
-   # Example with private IPs (replace with your targets):
-   backend_addresses = [
-     { ip_address = "10.0.2.4" },
-     { ip_address = "10.0.2.5" }
-   ]
- }
- backend_http_settings {
-   name                  = "bhs-https"
-   port                  = 443
-   protocol              = "Https"
-   pick_host_name_from_backend_address = true
-   request_timeout       = 30
-   probe_name            = "probe-https"
- }
- probe {
-   name                = "probe-https"
-   protocol            = "Https"
-   host                = "your.app.internal" # or 127.0.0.1 if simple
-   path                = "/health"
-   interval            = 30
-   timeout             = 30
-   unhealthy_threshold = 3
-   pick_host_name_from_backend_http_settings = true
- }
- http_listener {
-   name                           = "listener-443"
-   frontend_ip_configuration_name = "public-fe"
-   frontend_port_name             = "fp-443"
-   protocol                       = "Https"
-   ssl_certificate_name           = "tls-cert"  # add cert block as needed
- }
- request_routing_rule {
-   name                       = "rule-https"
-   rule_type                  = "Basic"
-   http_listener_name         = "listener-443"
-   backend_address_pool_name  = "pool-servers"
-   backend_http_settings_name = "bhs-https"
- }
+  name                = "appgw-waf"
+  location            = var.resource_group_location
+  resource_group_name = var.second_resource_group_name
+
+  sku {
+    name = "WAF_v2"
+    tier = "WAF_v2"
+  }
+
+  gateway_ip_configuration {
+    name      = "gw-ipcfg"
+    subnet_id = azurerm_subnet.appgw_subnet.id
+  }
+
+  frontend_port {
+    name = "fp-443"
+    port = 443
+  }
+
+  frontend_ip_configuration {
+    name                 = "public-fe"
+    public_ip_address_id = azurerm_public_ip.appgw_pip.id
+  }
+
+  backend_address_pool {
+    name = "pool-servers"
+
+    # Dynamically pull the private IPs of all VMs
+    ip_addresses = [
+      for nic in azurerm_network_interface.nic : nic.ip_configuration[0].private_ip_address
+    ]
+  }
+
+  backend_http_settings {
+    name                  = "bhs-https"
+    port                  = 443
+    protocol              = "Https"
+    pick_host_name_from_backend_address = true
+    request_timeout       = 30
+    probe_name            = "probe-https"
+  }
+
+  probe {
+    name                = "probe-https"
+    protocol            = "Https"
+    host                = "127.0.0.1" # simple health probe
+    path                = "/health"
+    interval            = 30
+    timeout             = 30
+    unhealthy_threshold = 3
+    pick_host_name_from_backend_http_settings = true
+  }
+
+  http_listener {
+    name                           = "listener-443"
+    frontend_ip_configuration_name = "public-fe"
+    frontend_port_name             = "fp-443"
+    protocol                       = "Https"
+    ssl_certificate_name           = "tls-cert" # optional if you skip SSL
+  }
+
+  request_routing_rule {
+    name                       = "rule-https"
+    rule_type                  = "Basic"
+    http_listener_name         = "listener-443"
+    backend_address_pool_name  = "pool-servers"
+    backend_http_settings_name = "bhs-https"
+  }
 }
+
 resource "azurerm_public_ip" "example" {
 
   name                = "myPublicIP"
