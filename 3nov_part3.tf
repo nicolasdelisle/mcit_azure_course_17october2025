@@ -82,6 +82,17 @@ resource "azurerm_linux_virtual_machine" "vm" {
     version   = var.image_version
   }
 }
+//load balancer 
+// since now pip.id is using var in a list ill create a ressource bloc to give lb a ip address
+
+resource "azurerm_public_ip" "lb_pip" {
+  name                = "lb-public-ip"
+  location            = var.resource_group_location
+  resource_group_name = var.second_resource_group_name
+  allocation_method   = "Static"
+  sku                 = "Standard"
+}
+
 resource "azurerm_lb" "lb" {
   name                = "myLoadBalancer"
   location            = var.resource_group_location
@@ -89,8 +100,8 @@ resource "azurerm_lb" "lb" {
   sku                 = "Standard"
 
   frontend_ip_configuration {
-    name                 = "msload"
-    public_ip_address_id = azurerm_public_ip.pip.id
+    name                 = "feip"
+    public_ip_address_id = azurerm_public_ip.lb_pip.id
   }
 }
 
@@ -125,3 +136,6 @@ resource "azurerm_lb_probe" "http" {
  interval_in_seconds = 5
  number_of_probes    = 2
 }
+// new ressource bloc needed
+
+
