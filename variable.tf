@@ -1,4 +1,12 @@
 # class november 3
+
+// in terraform interger are called number
+variable "frontend_http_port" {
+  description = "Frontend port for the HTTP load balancer rule"
+  type        = number
+  default     = 80
+}
+
 variable "vm_names" {
   description = "List of VM names to create"
   default     = ["msuburb1", "msuburb2", "msuburb3", "msuburb4", "msuburb5"]
