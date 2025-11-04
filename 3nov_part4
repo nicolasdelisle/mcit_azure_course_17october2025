@@ -1,3 +1,4 @@
+/*
 // add a web app firewall to the load balancer
 resource "azurerm_virtual_network" "vnet" {
   name                = var.vnet_name
@@ -202,3 +203,4 @@ resource "azurerm_application_gateway" "waf_ag" {
     rule_set_version = "3.2"
   }
 }
+*/
