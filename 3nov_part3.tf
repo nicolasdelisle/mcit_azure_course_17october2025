@@ -106,7 +106,9 @@ resource "azurerm_lb" "lb" {
 }
 
 resource "azurerm_network_interface_backend_address_pool_association" "nic_bepool" {
- network_interface_id    = azurerm_network_interface.nic[count.index].id
+ for_each = azurerm_network_interface.nic
+
+ network_interface_id    = each.value.id
  ip_configuration_name   = "ipconfig1"
  backend_address_pool_id = azurerm_lb_backend_address_pool.bepool.id
 }
@@ -136,6 +138,6 @@ resource "azurerm_lb_probe" "http" {
  interval_in_seconds = 5
  number_of_probes    = 2
 }
-// new ressource bloc needed
+
 
 
