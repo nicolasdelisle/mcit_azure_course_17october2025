@@ -179,6 +179,7 @@ resource "azurerm_application_gateway" "appgw" {
     pick_host_name_from_backend_address = true
     request_timeout                   = 30
     probe_name                        = "probe-https"
+    cookie_based_affinity              = "Disabled"
   }
 
   probe {
