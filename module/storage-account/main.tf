@@ -15,9 +15,10 @@ terraform {
 locals {
   base_name = lower(replace("${var.name_prefix}${var.name_suffix}", "/[^a-z0-9]/", ""))
   # Ensure global uniqueness if requested; SA name must be 3-24 chars, lowercase, unique
-  composed_name = var.generate_random_suffix
+  composed_name = (var.generate_random_suffix
     ? lower(substr("${local.base_name}${random_string.sa_suffix.result}", 0, 24))
     : lower(substr(local.base_name, 0, 24))
+  )
 }
 
 resource "random_string" "sa_suffix" {
