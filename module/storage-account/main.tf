@@ -39,9 +39,9 @@ resource "azurerm_storage_account" "this" {
   account_kind             = var.account_kind
   access_tier              = var.account_kind == "StorageV2" ? var.access_tier : null
 
-  enable_https_traffic_only   = var.enable_https_traffic_only
+  https_traffic_only_enabled   = var.enable_https_traffic_only
   min_tls_version             = var.min_tls_version
-  allow_blob_public_access    = var.allow_blob_public_access
+  allow_nested_items_to_be_public    = var.allow_blob_public_access
   nfsv3_enabled               = var.nfsv3_enabled
   large_file_share_enabled    = var.large_file_share_enabled
   cross_tenant_replication_enabled = var.cross_tenant_replication_enabled
