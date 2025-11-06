@@ -1,6 +1,6 @@
 # class november 5
 
-
+/*
 variable "name_prefix" {
   description = "Lowercase prefix for the storage account name (only a-z and 0-9)."
   type        = string
@@ -207,7 +207,7 @@ EOT
   }))
   default = []
 }
-
+*/
 
 # class november 3
 
