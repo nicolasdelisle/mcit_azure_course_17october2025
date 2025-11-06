@@ -1,10 +1,11 @@
+/*
 # class 29 october
   output "webapp_hostnames" {
   value = {
     for k, v in azurerm_linux_web_app.app : k => try(v.default_site_hostname, "not yet created")
   }
 }
-/*
+
 # MCIT Exercise 1: Concatenate first + last name
 output "full_name" {
   value = "${var.firstname} ${var.lastname}"
