@@ -26,36 +26,6 @@ variable "random_suffix_length" {
   default     = 6
 }
 
-variable "resource_group_name" {
-  description = "Target resource group name."
-  type        = string
-}
-
-variable "location" {
-  description = "Azure region, e.g., eastus2."
-  type        = string
-}
-
-variable "account_tier" {
-  description = "Account tier: Standard or Premium."
-  type        = string
-  default     = "Standard"
-  validation {
-    condition     = contains(["Standard", "Premium"], var.account_tier)
-    error_message = "account_tier must be Standard or Premium."
-  }
-}
-
-variable "account_replication_type" {
-  description = "Replication: LRS, ZRS, GRS, RAGRS, GZRS, RAGZRS."
-  type        = string
-  default     = "LRS"
-  validation {
-    condition     = contains(["LRS","ZRS","GRS","RAGRS","GZRS","RAGZRS"], var.account_replication_type)
-    error_message = "Invalid replication type."
-  }
-}
-
 variable "account_kind" {
   description = "Storage account kind."
   type        = string
@@ -234,11 +204,7 @@ EOT
   default = []
 }
 
-variable "tags" {
-  description = "Tags to apply to all resources."
-  type        = map(string)
-  default     = {}
-}
+
 # class november 3
 
 // in terraform interger are called number
