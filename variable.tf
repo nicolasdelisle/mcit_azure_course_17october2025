@@ -1,13 +1,6 @@
 # class november 5
 
-locals {
-  base_name = lower(replace("${var.name_prefix}${var.name_suffix}", "/[^a-z0-9]/", ""))
-  # Ensure global uniqueness if requested; SA name must be 3-24 chars, lowercase, unique
-  composed_name = (var.generate_random_suffix
-    ? lower(substr("${local.base_name}${random_string.sa_suffix.result}", 0, 24))
-    : lower(substr(local.base_name, 0, 24))
-  )
-}
+
 variable "name_prefix" {
   description = "Lowercase prefix for the storage account name (only a-z and 0-9)."
   type        = string
