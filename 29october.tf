@@ -1,4 +1,5 @@
 # Resource Group (create if absent)
+/*
 resource "azurerm_resource_group" "rg_new" {
   name     = var.second_resource_group_name
   location = var.resource_group_location
@@ -81,3 +82,4 @@ resource "azurerm_linux_web_app" "app" {
     type = "SystemAssigned"
   }
 }
+*/
