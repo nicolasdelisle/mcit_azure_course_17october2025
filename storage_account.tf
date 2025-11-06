@@ -14,7 +14,7 @@ module "storage_account" {
   blob_versioning_enabled  = var.blob_versioning_enabled
   allow_blob_public_access = var.allow_blob_public_access
   containers               = var.containers
-  tags                     = var.tags    */
+  tags                     = var.tags     */
 }
 
 
