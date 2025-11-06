@@ -1,6 +1,6 @@
 module "storage_account" {
   source = "./module/storage-account"
-
+/*
   name_prefix              = var.name_prefix
   name_suffix              = var.name_suffix
   generate_random_suffix   = var.generate_random_suffix
@@ -14,7 +14,7 @@ module "storage_account" {
   blob_versioning_enabled  = var.blob_versioning_enabled
   allow_blob_public_access = var.allow_blob_public_access
   containers               = var.containers
-  tags                     = var.tags
+  tags                     = var.tags    */
 }
 
 
