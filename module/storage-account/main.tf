@@ -26,7 +26,7 @@ resource "random_string" "sa_suffix" {
   length = var.random_suffix_length
   upper  = false
   lower  = true
-  number = true
+  numeric = true
   special = false
 }
 
