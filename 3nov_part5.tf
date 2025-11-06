@@ -1,4 +1,4 @@
-
+/*
 // waf using 443-https
 resource "azurerm_virtual_network" "vnet" {
   name                = var.vnet_name
@@ -255,5 +255,5 @@ resource "azurerm_dns_a_record" "example" {
   records             = [azurerm_public_ip.lb_pip.ip_address]
 
 }
+*/
 
- 
