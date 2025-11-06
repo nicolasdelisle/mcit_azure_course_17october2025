@@ -12,6 +12,7 @@ variable "name_prefix" {
   description = "Lowercase prefix for the storage account name (only a-z and 0-9)."
   type        = string
 #no a default value
+  default     = ""
   validation {
     condition     = can(regex("^[a-z0-9-]{3,60}$", var.name_prefix))
     error_message = "name_prefix must be 3-60 chars of lowercase letters, digits, or hyphens."
