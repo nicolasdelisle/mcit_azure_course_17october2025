@@ -1,0 +1,3 @@
+resourcegroup:
+  - name: "mcitresourcegroup"
+    location: "Canada Central"
