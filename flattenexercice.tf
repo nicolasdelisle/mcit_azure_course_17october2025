@@ -12,3 +12,16 @@ locals {
 output "region_zones" {
   value = local.region_zones
 }
+locals {
+  nested_list = [
+    ["apple", "banana"],
+    ["grape", "orange"],
+    ["mango"]
+  ]
+ 
+  flat_list = flatten(local.nested_list)
+}
+ 
+output "flat_list" {
+  value = local.flat_list
+}
