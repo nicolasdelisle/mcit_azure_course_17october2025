@@ -25,3 +25,17 @@ locals {
 output "flat_list" {
   value = local.flat_list
 }
+locals {
+  servers = {
+    group1 = ["srv1", "srv2"]
+    group2 = ["srv3"]
+  }
+ 
+  all_servers = flatten([
+    for group, srv_list in local.servers : srv_list
+  ])
+}
+ 
+output "all_servers" {
+  value = local.all_servers
+}
